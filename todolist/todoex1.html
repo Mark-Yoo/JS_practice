@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" class="inputTodo" placeholder= "Enter todo!">
+  <button class="add">Add</button>
+  <ul class="todos"></ul>
+<script>
+  const $inputTodo = document.querySelector('.inputTodo');
+  const $add = document.querySelector('.add');
+  const $todos = document.querySelector('.todos');
+
+  function addText(newText) {
+    $todos.innerHTML += `<li class="todo" style="list-style-type:none"><input type="checkbox">${newText}<button class="remove">X</button></li>`;
+  }
+  $add.onclick = function () {
+    console.log($inputTodo.value);
+    addText($inputTodo.value);
+    $inputTodo.value = '';
+  };
+  function removeBtn(child) {
+    $todos.removeChild(child);
+  }
+  $todos.addEventListener('click', function (e) {
+    console.log(e.target);
+    const targetShort = e.target.parentNode;
+    if (targetShort.classList.contains('todo') && e.target.classList.contains('remove')) removeBtn(targetShort);
+  });
+
+  $todos.addEventListener('change', function (e) {
+    if (e.target.checked) {
+      e.target.parentNode.style.textDecoration = 'line-through';
+    } else {
+      e.target.parentNode.style.textDecoration = 'none';
+    }
+  })
+</script>
+</body>
+</html>
