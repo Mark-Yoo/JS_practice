@@ -71,6 +71,7 @@ $inputTodo.addEventListener('keyup', function (e) {
   if (content === '' || e.keyCode !== 13) return;
 
   todos = [{ id: generatedId(), content, completed: false }, ...todos];
+  $inputTodo.value = '';
   render();
 });
 
