@@ -72,6 +72,8 @@ $inputTodo.addEventListener('keyup', function (e) {
 
   todos = [{ id: generatedId(), content, completed: false }, ...todos];
   $inputTodo.value = '';
+
+  countLefted();
   render();
 });
 
