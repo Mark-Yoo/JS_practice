@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <pre class="result"></pre>
+  <script>
+    const $result = document.querySelector('.result');
+
+    const render = function (content) {
+      $result.innerHTML = content;
+    };
+
+    const promise = function (method, url, payload) {
+      return new Promise(function (resolve, reject) {
+        const xhr = new XMLHttpRequest();
+        xhr.open(method, url);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(payload));
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState !== XMLHttpRequest.DONE) return;
+
+          if (xhr.status >= 200 && xhr.status < 400) {
+            resolve(xhr.response);
+          } else {
+            reject(xhr.status);
+          }
+        };
+      });
+    };
+
+    // promise('GET', 'http://localhost:3000/todos');
+    //  .then(render)
+    //  .catch(console.error);
+    // promise('PUT', 'http://localhost:3000/todos/3', { id: 3, content: 'Angular', completed: true });
+    //  .then(render)
+    //  .catch(console.error);
+    // promise('PATCH', 'http://localhost:3000/todos/2', { content: 'Angular' });
+    //  .then(render)
+    //  .catch(console.error);
+    // promise('DELETE', 'http://localhost:3000/todos2');
+    //  .then(render)
+    //  .catch(console.error);
+    promise('GET', 'http://localhost:3000/todos/2')
+      .then(render)
+      .catch(console.error);
+  </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <pre class="result"></pre>
+  <script>
+  const $result = document.querySelector('.result');
+
+  const render = function (content) {
+    $result.innerHTML = content;
+  };
+
+  const fetchEx = function (method, url, payload) {
+    return fetch(url, {
+      method,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  };
+
+  // fetchEx('GET', 'http://localhost:3000/todos')
+  //   .then(res => res.json())
+  //   .then(res => JSON.stringify(res, null, 2))
+  //   .then(render)
+  //   .catch(console.error);
+  fetchEx('PUT', 'http://localhost:3000/todos/2', { id: 2, content: 'Angular', completed: true })
+    .then(res => res.json())
+    .then(res => JSON.stringify(res, null, 2))
+    .then(render)
+    .catch(console.error);
+  </script>
+</body>
+</html>

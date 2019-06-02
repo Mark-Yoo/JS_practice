@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Stop watch</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
+    .stop-watch {
+      font-family: 'Source Code Pro', monospace;
+      text-align: center;
+      font-size: 3em;
+      padding: 30px;
+    }
+
+    .control {
+      width: 300px;
+      padding: 5px;
+      margin-top: 15px;
+      font-size: 36px;
+      font-weight: bold;
+      border: 2px solid #f44336;
+      border-radius: 4px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .control:hover {
+      background: #f44336;
+      color: aliceblue;
+    }
+  </style>
+  <title>Stop watch</title>
+</head>
+<body>
+  <div class="stop-watch">
+    <div class="display">00:00:00</div>
+    <button class="control">Start</button>
+  </div>
+  <script>
+    const $display = document.querySelector('.display');
+    const $control = document.querySelector('.control');
+    let milisec = 0;
+    let sec = 0;
+    let minute = 0;
+    let startStop = false;
+    let timer = '';
+
+    function timerOn() {
+      timer = setInterval(() => {
+        milisec += 1;
+        if (milisec === 100) {
+          sec += 1;
+          milisec = 0;
+        } else if (sec === 60) {
+          minute += 1;
+          sec = 0;
+        }
+        const milisecD = milisec < 10 ? `0${milisec}` : milisec;
+        const secD = sec < 10 ? `0${sec}` : sec;
+        const minuteD = minute < 10 ? `0${minute}` : minute;
+        $display.textContent = `${minuteD}:${secD}:${milisecD}`;
+      }, 10);
+    }
+
+    function off() {
+      startStop = false;
+      clearInterval(timer);
+    }
+    $control.onclick = function () {
+      startStop = !startStop;
+      if (startStop === true) {
+        timerOn();
+        $control.textContent = 'Stop';
+      } else if (startStop === false) {
+        off();
+        $control.textContent = 'Start';
+      }
+    };
+  </script>
+</body>
+</html>

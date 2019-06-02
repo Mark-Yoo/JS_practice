@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <pre class="result"></pre>
+  <script>
+    const $result = document.querySelector('.result');
+
+    const ajax = function (method, url, callback, payload) {
+      const xhr = new XMLHttpRequest();
+      xhr.open(method, url);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify(payload));
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState !== XMLHttpRequest.DONE) return;
+
+        if (xhr.status >= 200 && xhr.status < 400) {
+          $result.innerHTML = xhr.response;
+        } else {
+          console.error('ERROR');
+        }
+      };
+    };
+
+    // ajax('PUT', 'http://localhost:3000/todos/3', $result, {id: 3, content: 'Angular', completed: true});
+    ajax('GET', 'http://localhost:3000/todos', $result);
+    // ajax('GET', 'http://localhost:3000/todos/2', $result);
+    // ajax('POST', 'http://localhost:3000/todos', $result, { id: 4, content: 'Angular', completed: false });
+    // ajax('DELETE', 'http://localhost:3000/todos/4', $result);
+    // ajax('PATCH', 'http://localhost:3000/todos/2', $result, { content: 'ECMA6' });
+  </script>
+</body>
+</html>
