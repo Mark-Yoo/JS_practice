@@ -1,0 +1,150 @@
+body {
+  height: 100%;
+  line-height: 1;
+  letter-spacing: -0.4px;
+  flex-flow: column;
+}
+
+div {
+  display: block;
+}
+
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.sign-in-form {
+  width: 100%;
+  max-width: 360px;
+  padding: 40px 30px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.sign-in-header {
+  display: block;
+  margin: 0 0 30px;
+}
+
+.sign-in-header-link {
+  display: block;
+  text-align: center;
+  height: 100px;
+}
+
+.login-logo {
+  background-size: 320px auto;
+  background-repeat: no-repeat;
+  width: 146px;
+  height: 50px;
+  background-position: left 0px top 0px;
+  display: inline-block;
+}
+
+.login-logo_img {
+  width: 146px;
+  height: 146px;
+}
+.form {
+  display: block;
+}
+
+.sign-in-form_form_input {
+  display: block;
+  width: 100%;
+  height: 50px;
+  margin: 0;
+  font-size: 15px;
+  line-height: 50px;
+  color: #424242;
+}
+
+.sign-in-form_password_form_wrap {
+  position: relative;
+  margin: -1px 0 0;
+}
+
+.sign-in-form_password_caps {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-left: 15px;
+  transform: translate(0, -50%);
+  color: white;
+  background-color: #F77;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  line-height: 13px;
+  font-weight: bold;
+  white-space: nowrap;
+  z-index: 2;
+  opacity: 1;
+  transition: opacity ease .3s;
+  margin-top: 0;
+}
+
+.sign-in-form_password_caps::after {
+  content: '';
+  display: block;
+  position: absolute;
+  border-top: solid 5px transparent;
+  border-bottom: solid 5px transparent;
+  border-right: solid 11px #F77;
+  left: 1px;
+  top: 50%;
+  transform: translate(-100%, -50%);
+}
+
+.sign-in-form_loginBtn {
+  cursor: pointer;
+  touch-action: manipulation;
+  display: block;
+  width: 100%;
+  height: 50px;
+  margin: 20px 0;
+  padding: 13px 15px;
+  font-size: 17px;
+  line-height: 1.41;
+  background-color: #35C5F0;
+  border-color: #35C5F0;
+  color: white;
+  transition: .2s ease;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 0;
+  border-width: 1px;
+  border-style: solid;
+  text-align: center;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.sign-in-form_action {
+  margin: 20px 0;
+  text-align: center;
+  color: #424242;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.sign-in-form_action_entry {
+  display: inline-block;
+  padding: 3px 5px;
+  margin: -3px 10px;
+  cursor: pointer;
+}
+
+#flash_messages {
+  width: 400px;
+  top: 100px;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200000;
+  font-size: 14px;
+}
